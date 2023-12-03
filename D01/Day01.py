@@ -1,6 +1,6 @@
 from time import time
 
-from . import input as input2
+from . import inputData as input2
 import re
 
 
