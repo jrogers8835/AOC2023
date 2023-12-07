@@ -1,0 +1,3 @@
+I used wolfram alpha to solve the equation
+(time-x)*x=distance
+the solutions are integers between, but not including, the intersecting points
