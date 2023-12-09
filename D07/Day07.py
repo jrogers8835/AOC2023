@@ -42,17 +42,22 @@ class Hand:
             return 7
         if countTot[4] > 0 or \
                 (countTot[3] > 0 and jcount == 1) or \
-                (countTot[2] > 0 and jcount == 2):
+                (countTot[2] > 0 and jcount == 2) or \
+                (jcount == 3):
             return 6
         if (countTot[3] > 0 and countTot[2] > 0) or \
-                (countTot[2] == 2 and jcount == 1):
+                (countTot[2] == 2 and jcount == 1) or \
+                (countTot[3] > 0 and jcount > 0):
             return 5
         if countTot[3] > 0 or \
-                (countTot[2] > 0 and jcount == 1):
+                (countTot[2] > 0 and jcount == 1) or \
+                (jcount==2):
             return 4
-        if countTot[2] == 2:
+        if countTot[2] == 2 or \
+                ( countTot[2] == 1 and jcount == 1):
             return 3
-        if countTot[2] > 0:
+        if countTot[2] > 0 or \
+                (jcount == 1):
             return 2
         return 1
 
@@ -83,7 +88,9 @@ class Hand:
 
 
 def run():
-    vals = list(map(lambda x: x.bid, sorted(map(lambda x: Hand(x[0], x[1]), inputObj))))
+    vals = sorted(map(lambda x: Hand(x[0], x[1]), inputObj))
+    print(vals)
+    vals = list(map(lambda x: x.bid, vals))
     total = 0
     for idx, v in enumerate(vals):
         total += v * (idx + 1)
